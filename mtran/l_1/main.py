@@ -16,7 +16,7 @@ COMMENT = 'Comment'
 JAVA_DOC = 'JavaDoc'
 
 token_exprs = [
-    (r'[ \n\t]+', WHITESPACES),
+    (r'[ \t]+', WHITESPACES),
     (r'//[^\n]*', COMMENT),
     (r'/\*[\s\S]*\*/', COMMENT),
     (r'/\*\*[\s\S]*\*/', JAVA_DOC),
@@ -116,10 +116,10 @@ token_exprs = [
     (r';', SEPARATOR),
 ]
 
-def lex(characters, token_exprs):
+def lex_line(characters, token_exprs, i):
     pos = 0
     tokens = []
-    errors = 0
+    errors = []
     while pos < len(characters):
         match = None
         for token_expr in token_exprs:
@@ -132,31 +132,48 @@ def lex(characters, token_exprs):
                     token = (text, tag)
                     tokens.append(token)
                 else:
-                    errors+=1
-                    sys.stderr.write('Invalid identifier at position %s : %s\n' % (pos, text))
+                    errors.append([i, pos, text])
+                    #sys.stderr.write('Invalid identifier at line %s, position %s : %s\n' % (i, pos, text))
                 break
         if not match:
-            errors+=1
-            sys.stderr.write('Illegal character at position %s : %s\n' % (pos, characters[pos]))
+            errors.append([i, pos, characters[pos]])
+            #sys.stderr.write('Illegal character at line %s, position %s : %s\n' % (i, pos, characters[pos]))
             pos+=1
         else:
             pos = match.end(0)
-    print('Found' , errors , 'errors')
+    return [tokens, errors]
+
+def lex(text, token_exprs):
+    tokens = []
+    errors = []
+    lines = text.split('\n')
+    for i in range(len(lines)):
+        if lines[i] is not '':
+            temp = lex_line(lines[i], token_exprs, i+1)
+            tokens.extend(temp[0])
+            errors.extend(temp[1])
+    if errors:
+        print(len(errors), 'errors:')
+        for error in errors:
+            print('Line', error[0], 'position', error[1], ':', error[2])
     return tokens
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("files", nargs="+", help="files to parse")
+    parser.add_argument("-c", "--code", help="show code", action="store_true")
     parser.add_argument("-t", "--tokens", help="show tokens", action="store_true")
     args = parser.parse_args()
-    
+
     tokens = []
 
     for filename in args.files:
         with open(filename, 'r') as f:
             data = f.read()
+            if args.code:
+                print(data)
             tokens.extend(lex(data, token_exprs))
+            if args.tokens:
+                for token in tokens:
+                    print(token)
 
-    if args.tokens:
-        for token in tokens:
-            print(token)
