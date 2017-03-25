@@ -16,14 +16,18 @@ COMMENT = 'Comment'
 JAVA_DOC = 'JavaDoc'
 
 token_exprs = [
-    (r'[ \t]+', WHITESPACES),
+    (r'[ \t]+', None),
+
+    # comments
     (r'//[^\n]*', COMMENT),
     (r'/\*[\s\S]*\*/', COMMENT),
     (r'/\*\*[\s\S]*\*/', JAVA_DOC),
 
-    (r'[0-9]+[a-zA-Z_]+[0-9]*', INVALID_IDENTIFIER), 
-    (r'[a-zA-Z_\$]\w*', IDENTIFIER),
+    # identifiers
+    (r'[0-9]+[a-zA-Z_\$][\w\$]*', INVALID_IDENTIFIER), 
+    (r'[a-zA-Z_\$][\w\$]*', IDENTIFIER),
 
+    # literals
     (r'\"([^\"]+)\"', STRING),
     (r'\'([^\"]+)\'', STRING),
     (r'\d+\.\d+', FLOATING_POINT_LITERAL),
@@ -32,6 +36,7 @@ token_exprs = [
     (r'0x[0-9a-f]+', INTEGER_LITERAL),
     (r'\d+', INTEGER_LITERAL),
 
+    # keywords
     (r'abstract', KEYWORD),
     (r'assert', KEYWORD),
     (r'boolean', KEYWORD),
@@ -83,6 +88,7 @@ token_exprs = [
     (r'volatile', KEYWORD),
     (r'while', KEYWORD),
 
+    # operators
     (r'=', OPERATOR),
     (r'\+', OPERATOR),
     (r'-', OPERATOR),
@@ -104,6 +110,7 @@ token_exprs = [
     (r'>', OPERATOR),
     (r'!=', OPERATOR),
 
+    # separators
     (r'\:', SEPARATOR),
     (r'\[', SEPARATOR),
     (r'\]', SEPARATOR),
@@ -128,16 +135,15 @@ def lex_line(characters, token_exprs, i):
             match = regex.match(characters, pos)
             if match:
                 text = match.group(0)
-                if tag is not INVALID_IDENTIFIER:
-                    token = (text, tag)
-                    tokens.append(token)
-                else:
-                    errors.append([i, pos, text])
-                    #sys.stderr.write('Invalid identifier at line %s, position %s : %s\n' % (i, pos, text))
+                if tag is not None:
+                    if tag is not INVALID_IDENTIFIER:
+                        token = (text, tag)
+                        tokens.append(token)
+                    else:
+                        errors.append([i, pos, text])
                 break
         if not match:
             errors.append([i, pos, characters[pos]])
-            #sys.stderr.write('Illegal character at line %s, position %s : %s\n' % (i, pos, characters[pos]))
             pos+=1
         else:
             pos = match.end(0)
@@ -175,5 +181,5 @@ if __name__ == "__main__":
             tokens.extend(lex(data, token_exprs))
             if args.tokens:
                 for token in tokens:
-                    print(token)
+                    print('{0:20} == {1:20}'.format(token[0], token[1]))
 

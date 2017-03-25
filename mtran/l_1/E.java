@@ -13,9 +13,10 @@ public class Main {
         int[] array = new int[10];
 
 
-        for (int i = 0; i < 2array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             array[i] = random.nextInt(100);
-            if (array[i] > 30) {
+            if (array[i] > 30) esle {
+                $$$
                 System.out.println(array[i]);
             }
         }
