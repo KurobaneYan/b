@@ -1,2 +1,0 @@
-Hello World!\n
-This is a simple Test!
