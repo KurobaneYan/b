@@ -62,7 +62,7 @@ def add_watermark(args):
         pixels[i_1, j_1] = increase_brightness(pixels[i_1, j_1])
         pixels[i_2, j_2] = decrease_brightness(pixels[i_2, j_2])
 
-    image.save(out_file)
+    image.save(args.out)
 
 
 def _parse_args():
