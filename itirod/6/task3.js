@@ -9,7 +9,7 @@ function fibonacci(){
            throw "Incorrect input";
     }
     catch(err){
-        alert(err);
+        console.log(err);
         return;
     }
     
@@ -19,7 +19,5 @@ function fibonacci(){
         a=prev;
     }
     
-    alert(b);
-    
-    
+    console.log(b);
 }

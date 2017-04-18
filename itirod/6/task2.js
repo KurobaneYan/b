@@ -14,7 +14,7 @@ function calcBuildingParams(){
            throw "Incorrect input";
     }
     catch(err){
-        alert(err);
+        console.log(err);
         return;
     }
     
@@ -30,9 +30,9 @@ function calcBuildingParams(){
            throw "There is no such appartment";
     }
     catch(err){
-        alert(err);
+        console.log(err);
         return;
     }   
     
-    alert("Entrance number for that appartment is "+entranceNum);
+    console.log("Entrance number for that appartment is "+entranceNum);
 }

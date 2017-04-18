@@ -1,13 +1,13 @@
-function task2(){
-    var array=prompt("Enter an array").split(" ");
+function task2() {
+    var array = prompt("Enter an array").split(" ");
     
-    for(i=0;i<array.length;i++)
-        array[i]=parseInt(array[i]);
+    for(let i = 0; i < array.length; i++)
+        array[i] = parseInt(array[i]);
     
-    alert(quickSort(array, 0, array.length-1));
+    console.log('quickSort: ' + quickSort(array, 0, array.length - 1));
 }
 
-function quickSort(arr, left, right){
+function quickSort(arr, left, right) {
    var len = arr.length, 
    pivot,
    partitionIndex;

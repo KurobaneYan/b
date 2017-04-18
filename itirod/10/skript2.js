@@ -21,7 +21,7 @@ createmass(mass_key, mass_value, mydictionary)
 srt(mass_value, mass_key)
 createtree(mass_key, mass_value)
 number_code(mydictionary_bit)
-alert(makestr_out(str_in, mydictionary_bit, max_len))
+console.log(makestr_out(str_in, mydictionary_bit, max_len))
 
 function createmass(m_k, m_v, dct) {
 	let length = 0

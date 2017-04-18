@@ -16,7 +16,7 @@ function task3(){
     }
     }
     
-    alert(matrixAddition(matrix, matrix2));
+    console.log("matrixAddition: " + matrixAddition(matrix, matrix2));
 }
 
 function matrixAddition(a, b) {

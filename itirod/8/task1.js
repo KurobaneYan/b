@@ -3,7 +3,7 @@ function task1(){
     var edge=parseInt(prompt("Enter a last element"));
     var step=parseInt(prompt("Enter a step"));
     
-    alert(range(start,edge,step));
+    console.log('range ' + range(start,edge,step));
 }
 
 function range(start, edge, step) {

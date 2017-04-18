@@ -7,26 +7,24 @@ function task1(){
     var z2=parseInt(prompt("Enter z coordinate for the second vector"));
     
     Vector.prototype.plus = function(vector) {
-    return new Vector(this.x+vector.x,this.y+vector.y,this.z+vector.z);
+        return new Vector(this.x+vector.x,this.y+vector.y,this.z+vector.z);
     };
     Vector.prototype.scalar = function(vector) {
-    return new Vector((this.x*vector.x)+(this.y*vector.y)+(this.z*vector.z));
+        return new Vector((this.x*vector.x)+(this.y*vector.y)+(this.z*vector.z));
     };
     Object.defineProperty(Vector.prototype, "length", {
-    get: function() {
-      
-      return 3;
-    }
+        get: function() {
+            return 3;
+        }
     });
-    Vector.prototype.toString = Vector.prototype.valueOf = function()
-    {
-    return "x:"+this.x+" y:"+this.y+" z:"+this.z;
+    Vector.prototype.toString = Vector.prototype.valueOf = function() {
+        return "x:"+this.x+" y:"+this.y+" z:"+this.z;
     }
     
     
     var vec1=new Vector(x,y,z);
     var vec2=new Vector(x2,y2,z2);
-    alert(vec1.plus(vec2));
+    console.log(vec1.plus(vec2));
 }
 
 function Vector(x,y,z){

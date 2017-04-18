@@ -14,5 +14,5 @@ function getDayOfWeek(){
     weekday[5] = "Friday";
     weekday[6] = "Saturday";
 
-    alert(weekday[dat.getDay()]);
+    console.log(weekday[dat.getDay()]);
 }

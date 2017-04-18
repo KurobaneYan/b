@@ -17,7 +17,7 @@ function isSquare(){
     var dd2=Math.pow(cx-x2,2)+Math.pow(cy-y2,2);
     var dd3=Math.pow(cx-x3,2)+Math.pow(cy-y3,2);
     var dd4=Math.pow(cx-x4,2)+Math.pow(cy-y4,2);
-    alert(dd1==dd2 && dd1==dd3 && dd1==dd4 ? "Yes" : "No");
+    console.log("isSquare " + dd1==dd2 && dd1==dd3 && dd1==dd4 ? "Yes" : "No");
 }
 function pointIsInSquare(){
     var coords=prompt("Please, enter four coordinates separated by space");
@@ -31,9 +31,10 @@ function pointIsInSquare(){
     var x = parseInt(crd[0]);
     var y = parseInt(crd[1]);
     
+    console.log("pointIsSquare");
     if ((x1 <= x ) && ( x <= x2) && (y1 <= y) && (y <= y2)) {
-        alert("Yes");
+        console.log("Yes");
     } else {
-        alert("No");
+        console.log("No");
     }
 }
