@@ -8,14 +8,12 @@ from time import time
 
 app = Flask(__name__)
 
-TGS_NAME_KEY = 'tgs_name'
-SERVICE_NAME_KEY = 'service_name'
 USER_NAME_KEY = 'user'
-TGS_NAME = 'my_tgs'
+TGS_NAME = 'tgs_name'
 SERVICE_NAME = 'my_service'
 
 tgs_private_keys = {
-    TGS_NAME: 'zxcqwe',
+    TGS_NAME: 'zxcvbn',
 }
 
 service_private_keys = {

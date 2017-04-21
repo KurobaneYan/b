@@ -6,8 +6,8 @@ from time import time
 
 SERVER_URL = 'http://127.0.0.1:5000/'
 
-user = 'maximka'
-password = 'qwe123'
+user = 'kroan'
+password = 'qwertg'
 
 
 def process_response(encrypted_session_key, my_key):
@@ -25,11 +25,11 @@ def get_timestamp():
 
 
 def main():
-    response = post(SERVER_URL + 'user_auth/my_tgs', data={'user': user})
+    response = post(SERVER_URL + 'user_auth/tgs_name', data={'user': user})
 
     if response.status_code == codes.ok:
         content = response.json()
-        print('Response from user_auth/my_tgs:', content)
+        print('Response from user_auth/tgs_name:', content)
 
         encrypted_id, tgs_session_key, _ = process_response(content['sk'],
                                                             password)
