@@ -6,7 +6,7 @@
 #include <time.h>
 
 #define BUFSIZE 50
-#define FIFO "/media/AddDrive/STUD/3stage/sem2/osis/OCIC/lab7/fifo"
+#define FIFO "/home/yan/b/osis/7/fifo"
 
 int main(int argc, char **argv)
 {

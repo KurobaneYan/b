@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define RUNNING_DIR	"/home/kresik/OCIC/lab9"
+#define RUNNING_DIR	"/home/yan/b/osis/9"
 
 void server();
 void morz9nka();
@@ -95,7 +95,7 @@ void morz9nka(char *path)
 	FILE *fr;
 	char c;
 	fp = fopen(path, "r");
-	fr = fopen("/home/kresik/OCIC/lab9/output.txt", "w");
+	fr = fopen("/home/yan/b/osis/9/output.txt", "w");
 	if (fp != NULL && fr != NULL) {
 		while ((c = fgetc(fp)) != EOF) {
             fprintf(fr, "%s", tablemorz(c));

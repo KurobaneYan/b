@@ -37,7 +37,7 @@ void client()
         return;
     }
     
-    char lenbuf[256] = "/home/kresik/OCIC/lab9/input.txt";
+    char lenbuf[256] = "/home/yan/b/osis/9/input.txt";
     write(sockfd, lenbuf, 100);
 
     close(sockfd);
