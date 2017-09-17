@@ -1,0 +1,25 @@
+{
+  "name": "l1",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-d3-basic": "^1.6.11",
+    "react-dom": "^15.6.1",
+    "react-scripts": "1.0.13",
+    "standard": "^10.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "standard --fix"
+  },
+  "standard": {
+    "env": {
+      "browser": true,
+      "jest": true
+    }
+  }
+}
