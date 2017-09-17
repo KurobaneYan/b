@@ -1,0 +1,4 @@
+
+Scanning a network asset information
+Usage: python NScan.py -h 192.168.1 [-p 21,80,3306] [-m 50] [-t 10] [-n]
+    
